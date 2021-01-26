@@ -1,0 +1,17 @@
+name: an_ordinary_form
+description: An Ordinary Form App, Nothing To See Here
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ^1.22.6
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
