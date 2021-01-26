@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'input_card.dart';
 import 'model/tree.dart';
 
-class TreeNav<T extends Comparable> extends StatefulWidget {
-  final Tree<T> tree;
-  final void Function(T value) onSelected;
+class TreeNav extends StatefulWidget {
+  final Tree<String> tree;
+  final void Function(String value) onSelected;
 
   const TreeNav({Key key, this.tree, this.onSelected}) : super(key: key);
 
   @override
-  _TreeNavState<T> createState() => _TreeNavState<T>();
+  _TreeNavState createState() => _TreeNavState();
 }
 
-class _TreeNavState<T extends Comparable> extends State<TreeNav<T>>
+class _TreeNavState extends State<TreeNav>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   TabController _controller;
 
@@ -36,15 +35,19 @@ class _TreeNavState<T extends Comparable> extends State<TreeNav<T>>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
     if (widget.tree.isLeaf) {
       return Material(
         color: Colors.white,
-        child: InputCard(
-          text: widget.tree.displayText,
+        child: InkWell(
           onTap: () => widget.onSelected(widget.tree.value),
+          child: Center(
+            child: Text(widget.tree.displayText),
+          ),
         ),
       );
     }
+
     final theme = Theme.of(context);
     return Column(
       children: [
@@ -72,7 +75,7 @@ class _TreeNavState<T extends Comparable> extends State<TreeNav<T>>
                 ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

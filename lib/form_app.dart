@@ -22,6 +22,7 @@ class _FormAppState extends State<FormApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "An Ordinary Form App, Nothing To See Here",
       debugShowCheckedModeBanner: false,
       theme: ThemeData.from(
         colorScheme: ColorScheme.fromSwatch(
